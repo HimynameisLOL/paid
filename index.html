@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password</title>
+    <style>
+        button {
+            background-color: transparent;
+            color: #0074cc;
+            border: 2px solid #0074cc;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0074cc;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 116, 204, 0.6);
+        }
+
+        input[type="text"] {
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbow 3s linear infinite;
+            border: 2px solid #0074cc;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        p {
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>We are going paid. EVERY OTHER LINK IS A SCAM.</h1>
+    <h1>Type redirect to buy:</h1>
+    <input type="text" id="inputText">
+    <button onclick="checkInput()">Submit</button>
+    <p id="message"></p>
+
+    <a id="redirectLink" style="display: none;" href="https://t.ly/3F4gi">Redirect Link</a>
+
+    <script>
+        function checkInput() {
+            var userInput = document.getElementById("inputText").value;
+            var messageElement = document.getElementById("message");
+            if (userInput === "redirect") {
+                messageElement.textContent = "Redirecting...";
+                // Add a 3-second delay before the redirection
+                setTimeout(function () {
+                    var redirectLink = document.getElementById("redirectLink");
+                    // Trigger a click event on the hidden anchor element to initiate redirection
+                    redirectLink.click();
+                    // Change the message after a delay
+                    setTimeout(function () {
+                        messageElement.textContent = "You can close this tab now.";
+                    }, 3000); // Change the message after 3 seconds
+                }, 3000); // Redirect after 3 seconds
+            } else {
+                messageElement.textContent = "Incorrect input. Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
 
